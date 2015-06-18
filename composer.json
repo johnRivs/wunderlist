@@ -1,0 +1,24 @@
+{
+    "name": "johnrivs/wunderlist",
+    "description": "An SDK for the latest Wunderlist API version",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "~5.3"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wunderlist": "src/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "John Rivs",
+            "email": "johnrivs21@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
