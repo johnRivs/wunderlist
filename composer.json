@@ -10,7 +10,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Wunderlist": "src/"
+            "Wunderlist\\": "src/"
         }
     },
     "license": "MIT",
