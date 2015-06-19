@@ -1,6 +1,6 @@
 {
     "name": "johnrivs/wunderlist",
-    "description": "An SDK for the latest Wunderlist API version",
+    "description": "SDK for the latest Wunderlist API version",
     "keywords": ["wunderlist", "laravel", "api"],
     "type": "library",
     "license": "MIT",
