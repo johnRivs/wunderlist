@@ -1,6 +1,0 @@
-suites:
-    default:
-        src_path: src
-
-extensions:
-    - PhpSpec\Extension\CodeCoverageExtension
