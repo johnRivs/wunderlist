@@ -4,12 +4,10 @@
     "keywords": ["wunderlist", "laravel", "api"],
     "type": "library",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "John Rivs",
-            "email": "johnrivs21@gmail.com"
-        }
-    ],
+    "authors": [{
+        "name": "John Rivs",
+        "email": "johnrivs21@gmail.com"
+    }],
     "require": {
         "guzzlehttp/guzzle": "~5.3"
     },
