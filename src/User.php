@@ -4,7 +4,7 @@ trait User {
 
     /**
      * Show the currently logged in user.
-     * 
+     *
      * @return array
      */
     public function getCurrentUser()

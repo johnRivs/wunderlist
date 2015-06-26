@@ -30,7 +30,7 @@ class Wunderlist {
     /**
      * HTTP Client.
      * 
-     * @var Guzzlehttp\Client
+     * @var \Guzzlehttp\Client
      */
     protected $http;
 
@@ -55,14 +55,23 @@ class Wunderlist {
      */
     protected $accessToken;
 
-    public function __construct(HttpClient $http, $clientId, $clientSecret, $accessToken)
+    public function __construct($clientId, $clientSecret, $accessToken)
     {
-        $this->http         = $http;
         $this->clientId     = $clientId;
         $this->clientSecret = $clientSecret;
         $this->accessToken  = $accessToken;
+
+        $this->http         = $this->getHttpClient();
     }
 
+    /**
+     * Master call. It makes the requests to the Wunderlist API endpoints.
+     * 
+     * @param  string $httpMethod
+     * @param  string $endpoint
+     * @param  array  $parameters
+     * @return array
+     */
     public function call($httpMethod, $endpoint, array $parameters = [])
     {
         // Every request to the Wunderlist API
@@ -100,6 +109,16 @@ class Wunderlist {
         if (empty($this->statusCode)) throw new \Exception('An HTTP status code has not been set. Make sure you ask for this AFTER you make a request to the API.');
 
         return $this->statusCode;
+    }
+
+    /**
+     * Get a fresh instance of the Guzzle HTTP client.
+     * 
+     * @return \GuzzleHttp\Client
+     */
+    protected function getHttpClient()
+    {
+        return new HttpClient;
     }
     
 }
