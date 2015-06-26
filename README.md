@@ -3,10 +3,45 @@
 
 Current status: in development.
 
-In progress:
+#### Progress:
+- Folder
+    - ~~Get all folders~~
+    - ~~Get a folder~~
+    - Create a folder
+    - Update a folder
+    - Delete a folder
+    - ~~Get folder revisions~~
 - Lists
-- Avatar
+    - ~~Get all lists~~
+    - ~~Get a list~~
+    - Create a list
+    - Update a list
+    - Make a list public
+    - Delete a list
+- Note
+    - ~~Get all notes~~
+    - ~~Get a note~~
+    - Create a note
+    - Update a note
+    - Delete a note
+- Reminder
+    - ~~Get all reminders~~
+    - Create a reminder
+    - Update a reminder
+    - Delete a reminder
+- Subtask
+    - ~~Get all subtasks~~
+    - ~~Get a subtask~~
+    - Create a subtask
+    - Update a subtask
+    - Delete a subtask
 - Task
+    - ~~Get all tasks~~
+    - ~~Get all completed tasks~~
+    - ~~Get a task~~
+    - Create a task
+    - Update a task
+    - Delete a task
 
 Finished:
 - User (except restricting the list of users a user can access by list)

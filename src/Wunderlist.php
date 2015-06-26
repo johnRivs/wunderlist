@@ -4,7 +4,13 @@ use GuzzleHttp\Client as HttpClient;
 
 class Wunderlist {
 
-    use User,
+    use Folder,
+        Lists,
+        Note,
+        Reminder,
+        Subtask,
+        Task,
+        User,
         Webhook;
 
     /**
