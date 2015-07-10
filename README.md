@@ -3,7 +3,43 @@
 
 Current status: in development.
 
-#### Progress:
+## FAQ
+##### What exactly is this pacakage?
+This package is a wrapper for each endpoint in the Wunderlist API. To know what attributes you need to provide to each method, the data it returns or what status code is set, head over to the [official Wunderlist API documentation](https://developer.wunderlist.com/documentation ).
+
+##### How flexible is this package?
+Since this package doesn't perform validation or sanitization, you can provide any attribute to (almost) every method. However, it'll check if the attributes contain the fields required by the endpoint. If you provide unrecognized attribute fields, they will be ignored. Again, to know what fields should be present in the attributes for a Wunderlist API endpoint, have a look at the [official Wunderlist API documentation](https://developer.wunderlist.com/documentation ). 
+
+##### How does it look like?
+In the current interation of this package, (almost) each method maps to a Wunderlist API endpoint. In the future, I might turn the interface to a more fluent one.
+Right now, this is how the interface looks:
+```php
+// Get all tasks for a given list
+$wunderlist->getTasks(['list_id' => 9876]);
+
+// Get all lists
+$wunderlist->getLists();
+```
+In the future, it'd look like this:
+```php
+// Get all tasks for a given list
+$wunderlist->lists()->find(9876)->tasks()->all();
+
+// Get the first task of each list
+$wunderlist->lists()->all()->tasks()->first();
+```
+If you've ever used [Laravel's Eloquent](http://laravel.com/docs/5.1/eloquent ), you can probably see where I'd take the inspiration from..
+
+##### How do I provide data?
+For most methods you'll need to provide an array of attributes, however, for certain ones you'll need to supply some value(s):
+- Task
+    - `getTask($taskId)` The id of the task.
+    - more to come...
+
+##### What if something goes wrong?
+Well.. at the time of this writing, the Wunderlist API isn't too helpful when it comes to error messages, so make sure you stick to the docs and ask any questions in the docs comment section.
+
+#### Progress
 - Folder
     - ~~Get all folders~~
     - ~~Get a folder~~

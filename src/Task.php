@@ -5,18 +5,19 @@ trait Task {
     /**
      * Show all the tasks from a list.
      * 
-     * @param  int $listId The id of the list.
-     * @param  string $completed Return only completed tasks.
+     * @param  array $attributes
      * @return array
      */
-    public function getTasks($listId, $completed = 'false')
+    public function getTasks(array $attributes = [])
     {
-        return $this->call('GET', 'tasks', [
-            'query' => [
-                'list_id'   => $listId,
-                'completed' => $completed
-            ]
-        ]);
+        $this->requires(['list_id'], $attributes);
+
+        // Convert the 'completed' attribute to a string
+        if (isset($attributes['completed'])) {
+            $attributes['completed'] = var_export($attributes['completed'], true);
+        }
+
+        return $this->call('GET', 'tasks', ['query' => $attributes]);
     }
 
     /**

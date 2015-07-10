@@ -5,37 +5,27 @@ trait Webhook {
     /**
      * Show all the webhooks for a list.
      * 
-     * @param  int $listId The id of the list.
+     * @param  array $attributes
      * @return array
      */
-    public function getWebhooks($listId)
+    public function getWebhooks(array $attributes = [])
     {
-        return $this->call('GET', 'webhooks', [
-            'query' => [
-                'list_id' => $listId
-            ]
-        ]);
+        $this->requires(['list_id'], $attributes);
+
+        return $this->call('GET', 'webhooks', ['query' => $attributes]);
     }
 
     /**
      * Create a webhook for a list.
      * 
-     * @param  int $listId The id of the list.
-     * @param  string $endpoint The URL called by Wunderlist.
-     * @param  string $processorType
-     * @param  string $configuration
+     * @param  array $attributes
      * @return array
      */
-    public function createWebhook($listId, $endpoint, $processorType = 'generic', $configuration = '')
+    public function createWebhook(array $attributes = [])
     {
-        return $this->call('POST', 'webhooks', [
-            'body' => [
-                'list_id'        => $listId,
-                'url'            => $endpoint,
-                'processor_type' => $processorType,
-                'configuration'  => $configuration
-            ]
-        ]);
+        $this->requires(['list_id', 'url', 'processor_type', 'configuration'], $attributes);
+
+        return $this->call('POST', 'webhooks', ['json' => $attributes]);
     }
 
     /**

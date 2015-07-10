@@ -1,5 +1,6 @@
 <?php namespace JohnRivs\Wunderlist;
 
+use Exception;
 use GuzzleHttp\Client as HttpClient;
 
 class Wunderlist {
@@ -108,9 +109,7 @@ class Wunderlist {
      */
     public function getStatusCode()
     {
-        if (empty($this->statusCode)) {
-            throw new \Exception('An HTTP status code has not been set. Make sure you ask for this AFTER you make a request to the API.');
-        }
+        if (empty($this->statusCode)) throw new Exception('An HTTP status code has not been set. Make sure you ask for this AFTER you make a request to the API.');
 
         return $this->statusCode;
     }
@@ -123,6 +122,22 @@ class Wunderlist {
     protected function getHttpClient()
     {
         return new HttpClient;
+    }
+
+    /**
+     * Checks if the provided attributes contain certain fields.
+     * 
+     * @param  array  $requirements A list of required attributes.
+     * @param  array  $attributes   The provided attributes
+     * @return \Exception
+     */
+    protected function requires(array $requirements, array $attributes)
+    {
+        foreach ($requirements as $required) {
+            if ( ! array_key_exists($required, $attributes)) {
+                return Exception("The '{$required}' attribute is required.");
+            }
+        }
     }
     
 }

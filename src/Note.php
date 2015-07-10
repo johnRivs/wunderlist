@@ -6,26 +6,14 @@ trait Note {
      * Show all the notes in a list or task.
      * 
      * @param  string $entity A list or a task.
-     * @param  int $entityId The id of the list or task.
+     * @param  array $attributes
      * @return array
      */
-    public function getNotes($entity, $entityId)
+    public function getNotes($entity, array $attributes = [])
     {
-        if ($entity === 'task') {
-            $parameters = [
-                'query' => [
-                    'task_id' => $entityId
-                ]
-            ];
-        } elseif ($entity === 'list') {
-            $parameters = [
-                'query' => [
-                    'list_id' => $entityId
-                ]
-            ];
-        }
+        $this->requires(["{$entity}_id"], $attributes);
 
-        return $this->call('GET', 'notes', $parameters);
+        return $this->call('GET', 'notes', ['query' => $attributes]);
     }
 
     /**
