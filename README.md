@@ -44,5 +44,6 @@ Current status: in development.
     - Delete a task
 
 Finished:
+- Authorization
 - User (except restricting the list of users a user can access by list)
 - Webhook

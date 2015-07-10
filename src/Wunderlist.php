@@ -4,7 +4,8 @@ use GuzzleHttp\Client as HttpClient;
 
 class Wunderlist {
 
-    use Folder,
+    use Authorization,
+        Folder,
         Lists,
         Note,
         Reminder,
@@ -80,7 +81,8 @@ class Wunderlist {
         $parameters = array_merge($parameters, [
             'headers' => [
                 'X-Client-ID'    => $this->clientId,
-                'X-Access-Token' => $this->accessToken
+                'X-Access-Token' => $this->accessToken,
+                'Content-Type'   => 'application/json'
             ]
         ]);
 
@@ -106,7 +108,9 @@ class Wunderlist {
      */
     public function getStatusCode()
     {
-        if (empty($this->statusCode)) throw new \Exception('An HTTP status code has not been set. Make sure you ask for this AFTER you make a request to the API.');
+        if (empty($this->statusCode)) {
+            throw new \Exception('An HTTP status code has not been set. Make sure you ask for this AFTER you make a request to the API.');
+        }
 
         return $this->statusCode;
     }
