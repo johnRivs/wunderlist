@@ -36,7 +36,12 @@
 <h5>
 <a id="how-flexible-is-this-package" class="anchor" href="#how-flexible-is-this-package" aria-hidden="true"><span class="octicon octicon-link"></span></a>How flexible is this package?</h5>
 
-<p>Since this package doesn't perform validation or sanitization, you can provide any attribute to (almost) every method. However, it'll check if the attributes contain the fields required by the endpoint. If you provide unrecognized attribute fields, they will be ignored. Again, to know what fields should be present in the attributes for a Wunderlist API endpoint, have a look at the <a href="https://developer.wunderlist.com/documentation">official Wunderlist API documentation</a>. </p>
+<p>Since this package doesn't perform validation or sanitization, you can provide any attribute to (almost) every method. However, it'll check if the attributes contain the fields required by the endpoint. If you provide unrecognized attribute fields, they will be ignored. Again, to know what fields should be present in the attributes for a Wunderlist API endpoint, have a look at the <a href="https://developer.wunderlist.com/documentation">official Wunderlist API documentation</a>.</p>
+
+<h5>
+<a id="what-should-i-expect-from-the-wunderlist-api" class="anchor" href="#what-should-i-expect-from-the-wunderlist-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>What should I expect from the Wunderlist API?</h5>
+
+<p>Arrays most of the time. Some methods (such as <code>deleteTask()</code>) will return a status code. You can always use <code>getStatusCode()</code> regardless of what the method returned.</p>
 
 <h5>
 <a id="how-does-it-look-like" class="anchor" href="#how-does-it-look-like" aria-hidden="true"><span class="octicon octicon-link"></span></a>How does it look like?</h5>
