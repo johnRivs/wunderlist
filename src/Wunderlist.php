@@ -135,7 +135,7 @@ class Wunderlist {
     {
         foreach ($requirements as $required) {
             if ( ! array_key_exists($required, $attributes)) {
-                return Exception("The '{$required}' attribute is required.");
+                throw new Exception("The '{$required}' attribute is required.");
             }
         }
     }
