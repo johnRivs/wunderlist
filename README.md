@@ -8,7 +8,10 @@
 This package is a wrapper for each endpoint in the Wunderlist API. To know what attributes you need to provide to each method, the data it returns or what status code is set, head over to the [official Wunderlist API documentation](https://developer.wunderlist.com/documentation ).
 
 ##### How flexible is this package?
-Since this package doesn't perform validation or sanitization, you can provide any attribute to (almost) every method. However, it'll check if the attributes contain the fields required by the endpoint. If you provide unrecognized attribute fields, they will be ignored. Again, to know what fields should be present in the attributes for a Wunderlist API endpoint, have a look at the [official Wunderlist API documentation](https://developer.wunderlist.com/documentation ). 
+Since this package doesn't perform validation or sanitization, you can provide any attribute to (almost) every method. However, it'll check if the attributes contain the fields required by the endpoint. If you provide unrecognized attribute fields, they will be ignored. Again, to know what fields should be present in the attributes for a Wunderlist API endpoint, have a look at the [official Wunderlist API documentation](https://developer.wunderlist.com/documentation ).
+
+##### What should I expect from the Wunderlist API?
+Arrays most of the time. Some methods (such as `deleteTask()`) will return a status code. You can always use `getStatusCode()` regardless of what the method returned.
 
 ##### How does it look like?
 In the current interation of this package, (almost) each method maps to a Wunderlist API endpoint. In the future, I might turn the interface to a more fluent one.
