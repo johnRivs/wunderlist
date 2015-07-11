@@ -74,15 +74,9 @@ Well.. at the time of this writing, the Wunderlist API isn't too helpful when it
     - Create a subtask
     - Update a subtask
     - Delete a subtask
-- Task
-    - ~~Get all tasks~~
-    - ~~Get all completed tasks~~
-    - ~~Get a task~~
-    - Create a task
-    - Update a task
-    - Delete a task
 
 Finished:
 - Authorization
+- Task
 - User (except restricting the list of users a user can access by list)
 - Webhook
