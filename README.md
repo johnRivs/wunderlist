@@ -50,13 +50,6 @@ Well.. at the time of this writing, the Wunderlist API isn't too helpful when it
     - Update a folder
     - Delete a folder
     - ~~Get folder revisions~~
-- Lists
-    - ~~Get all lists~~
-    - ~~Get a list~~
-    - Create a list
-    - Update a list
-    - Make a list public
-    - Delete a list
 - Note
     - ~~Get all notes~~
     - ~~Get a note~~
@@ -77,6 +70,7 @@ Well.. at the time of this writing, the Wunderlist API isn't too helpful when it
 
 Finished:
 - Authorization
+- Lists
 - Task
 - User (except restricting the list of users a user can access by list)
 - Webhook
