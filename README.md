@@ -37,7 +37,7 @@ For most methods you'll need to provide an array of attributes, however, for cer
 Due to the nature of the service, Wunderlist requires to keep everything in sync by providing the entity's [revision](https://developer.wunderlist.com/documentation/concepts/revisions ). To achieve this, methods responsible for updating entities (such as tasks, lists...) will fetch the entity first and then perform a request to apply the changes.
 
 ##### What if something goes wrong?
-Well.. at the time of this writing, the Wunderlist API isn't too helpful when it comes to error messages, so make sure you stick to the docs and ask any questions in the docs comment section.
+Well.. at the time of this writing, the Wunderlist API isn't too helpful when it comes to error messages, so make sure you stick to the docs, use `getStatusCode()` and ask any questions in the docs comment section.
 
 #### Progress
 - Folder
