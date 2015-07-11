@@ -30,5 +30,52 @@ trait Task {
     {
         return $this->call('GET', "tasks/{$taskId}");
     }
+
+    /**
+     * Create a new task for a list.
+     * 
+     * @param  array $attributes
+     * @return array
+     */
+    public function createTask(array $attributes = [])
+    {
+        $this->requires(['list_id', 'title'], $attributes);
+
+        return $this->call('POST', 'tasks', ['json' => $attributes]);
+    }
+
+    /**
+     * Update a task.
+     *
+     * @param  int $taskId The id of the task.
+     * @param  array $attributes
+     * @return array
+     */
+    public function updateTask($taskId, array $attributes = [])
+    {
+        $attributes['revision'] = $this->getTask($taskId)['revision'];
+
+        $this->requires(['revision'], $attributes);
+
+        return $this->call('PATCH', "tasks/{$taskId}", ['json' => $attributes]);
+    }
+
+    /**
+     * Delete a task.
+     * 
+     * @param  int $taskId The id of the task.
+     * @param  array $attributes
+     * @return array
+     */
+    public function deleteTask($taskId, array $attributes = [])
+    {
+        $attributes['revision'] = $this->getTask($taskId)['revision'];
+
+        $this->requires(['revision'], $attributes);
+
+        $this->call('DELETE', "tasks/{$taskId}", ['query' => $attributes]);
+
+        return $this->getStatusCode();
+    }
  
 }
