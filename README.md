@@ -75,5 +75,6 @@ Finished:
 - Authorization
 - Lists
 - Task
+- Comment
 - User (except restricting the list of users a user can access by list)
 - Webhook

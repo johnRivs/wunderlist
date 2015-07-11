@@ -12,6 +12,7 @@ class Wunderlist {
         Reminder,
         Subtask,
         Task,
+        Comment,
         User,
         Webhook;
 
