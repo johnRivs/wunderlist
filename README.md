@@ -73,6 +73,7 @@ Well.. at the time of this writing, the Wunderlist API isn't too helpful when it
 
 Finished:
 - Authorization
+- Avatar
 - Lists
 - Task
 - Comment

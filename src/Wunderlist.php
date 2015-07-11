@@ -6,6 +6,7 @@ use GuzzleHttp\Client as HttpClient;
 class Wunderlist {
 
     use Authorization,
+        Avatar,
         Folder,
         Lists,
         Note,
@@ -81,11 +82,7 @@ class Wunderlist {
         // must provide the app client id
         // and access token.
         $parameters = array_merge($parameters, [
-            'headers' => [
-                'X-Client-ID'    => $this->clientId,
-                'X-Access-Token' => $this->accessToken,
-                'Content-Type'   => 'application/json'
-            ]
+            'headers' => $this->getHeaders(),
         ]);
 
         // We build the request
@@ -123,6 +120,21 @@ class Wunderlist {
     protected function getHttpClient()
     {
         return new HttpClient;
+    }
+
+    /**
+     * The headers needed for (almost) every request
+     * to the Wunderlist API.
+     * 
+     * @return array
+     */
+    protected function getHeaders()
+    {
+        return [
+            'X-Client-ID'    => $this->clientId,
+            'X-Access-Token' => $this->accessToken,
+            'Content-Type'   => 'application/json'
+        ];
     }
 
     /**
