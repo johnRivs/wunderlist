@@ -76,6 +76,11 @@ Right now, this is how the interface looks:</p>
 <p>Due to the nature of the service, Wunderlist requires to keep everything in sync by providing the entity's <a href="https://developer.wunderlist.com/documentation/concepts/revisions">revision</a>. To achieve this, methods responsible for updating entities (such as tasks, lists...) will fetch the entity first and then perform a request to apply the changes.</p>
 
 <h5>
+<a id="why-does-it-say-forbidden-during-authentication" class="anchor" href="#why-does-it-say-forbidden-during-authentication" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why does it say `Forbidden` during authentication?</h5>
+
+<p>Make sure the auth callback URL you provide to <code>authUrl()</code> matches the one you have for your <a href="https://developer.wunderlist.com/apps">app</a>.</p>
+
+<h5>
 <a id="what-if-something-goes-wrong" class="anchor" href="#what-if-something-goes-wrong" aria-hidden="true"><span class="octicon octicon-link"></span></a>What if something goes wrong?</h5>
 
 <p>Well.. at the time of this writing, the Wunderlist API isn't too helpful when it comes to error messages, so make sure you stick to the docs and ask any questions in the docs, use <code>getStatusCode()</code> comment section.</p>
