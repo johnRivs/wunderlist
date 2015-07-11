@@ -39,6 +39,9 @@ For most methods you'll need to provide an array of attributes, however, for cer
 ##### Why do some methods take more time than others?
 Due to the nature of the service, Wunderlist requires to keep everything in sync by providing the entity's [revision](https://developer.wunderlist.com/documentation/concepts/revisions ). To achieve this, methods responsible for updating entities (such as tasks, lists...) will fetch the entity first and then perform a request to apply the changes.
 
+##### Why does it say `Forbidden` during authentication?
+Make sure the auth callback URL you provide to `authUrl()` matches the one you have for your [app](https://developer.wunderlist.com/apps ).
+
 ##### What if something goes wrong?
 Well.. at the time of this writing, the Wunderlist API isn't too helpful when it comes to error messages, so make sure you stick to the docs, use `getStatusCode()` and ask any questions in the docs comment section.
 
