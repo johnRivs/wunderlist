@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Wunderlist by johnRivs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Wunderlist</h1>
+      <h2 class="project-tagline">SDK for the latest Wunderlist API version.</h2>
+      <a href="https://github.com/johnRivs/wunderlist" class="btn">View on GitHub</a>
+      <a href="https://github.com/johnRivs/wunderlist/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/johnRivs/wunderlist/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="use-the-latest-wunderlist-api-version-in-your-apps" class="anchor" href="#use-the-latest-wunderlist-api-version-in-your-apps" aria-hidden="true"><span class="octicon octicon-link"></span></a>Use the latest Wunderlist API version in your apps.</h1>
+
+<p><a href="https://packagist.org/packages/johnrivs/wunderlist"><img src="https://poser.pugx.org/johnrivs/wunderlist/v/stable" alt="Latest Stable Version"></a> <a href="https://packagist.org/packages/johnrivs/wunderlist"><img src="https://poser.pugx.org/johnrivs/wunderlist/downloads" alt="Total Downloads"></a> <a href="https://packagist.org/packages/johnrivs/wunderlist"><img src="https://poser.pugx.org/johnrivs/wunderlist/license" alt="License"></a></p>
+
+<p>Current status: in development.</p>
+
+<h2>
+<a id="faq" class="anchor" href="#faq" aria-hidden="true"><span class="octicon octicon-link"></span></a>FAQ</h2>
+
+<h5>
+<a id="what-exactly-is-this-pacakage" class="anchor" href="#what-exactly-is-this-pacakage" aria-hidden="true"><span class="octicon octicon-link"></span></a>What exactly is this pacakage?</h5>
+
+<p>This package is a wrapper for each endpoint in the Wunderlist API. To know what attributes you need to provide to each method, the data it returns or what status code is set, head over to the <a href="https://developer.wunderlist.com/documentation">official Wunderlist API documentation</a>.</p>
+
+<h5>
+<a id="how-flexible-is-this-package" class="anchor" href="#how-flexible-is-this-package" aria-hidden="true"><span class="octicon octicon-link"></span></a>How flexible is this package?</h5>
+
+<p>Since this package doesn't perform validation or sanitization, you can provide any attribute to (almost) every method. However, it'll check if the attributes contain the fields required by the endpoint. If you provide unrecognized attribute fields, they will be ignored. Again, to know what fields should be present in the attributes for a Wunderlist API endpoint, have a look at the <a href="https://developer.wunderlist.com/documentation">official Wunderlist API documentation</a>. </p>
+
+<h5>
+<a id="how-does-it-look-like" class="anchor" href="#how-does-it-look-like" aria-hidden="true"><span class="octicon octicon-link"></span></a>How does it look like?</h5>
+
+<p>In the current interation of this package, (almost) each method maps to a Wunderlist API endpoint. In the future, I might turn the interface to a more fluent one.
+Right now, this is how the interface looks:</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-c">// Get all tasks for a given list</span></span>
+<span class="pl-s1"><span class="pl-smi">$wunderlist</span><span class="pl-k">-&gt;</span>getTasks([<span class="pl-s"><span class="pl-pds">'</span>list_id<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">9876</span>]);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">// Get all lists</span></span>
+<span class="pl-s1"><span class="pl-smi">$wunderlist</span><span class="pl-k">-&gt;</span>getLists();</span></pre></div>
+
+<p>In the future, it'd look like this:</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-c">// Get all tasks for a given list</span></span>
+<span class="pl-s1"><span class="pl-smi">$wunderlist</span><span class="pl-k">-&gt;</span>lists()<span class="pl-k">-&gt;</span>find(<span class="pl-c1">9876</span>)<span class="pl-k">-&gt;</span>tasks()<span class="pl-k">-&gt;</span>all();</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">// Get the first task of each list</span></span>
+<span class="pl-s1"><span class="pl-smi">$wunderlist</span><span class="pl-k">-&gt;</span>lists()<span class="pl-k">-&gt;</span>all()<span class="pl-k">-&gt;</span>tasks()<span class="pl-k">-&gt;</span>first();</span></pre></div>
+
+<p>If you've ever used <a href="http://laravel.com/docs/5.1/eloquent">Laravel's Eloquent</a>, you can probably see where I'd take the inspiration from..</p>
+
+<h5>
+<a id="how-do-i-provide-data" class="anchor" href="#how-do-i-provide-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>How do I provide data?</h5>
+
+<p>For most methods you'll need to provide an array of attributes, however, for certain ones you'll need to supply some value(s):</p>
+
+<ul>
+<li>Task
+
+<ul>
+<li>
+<code>getTask($taskId)</code> The id of the task.</li>
+<li>more to come...</li>
+</ul>
+</li>
+</ul>
+
+<h5>
+<a id="what-if-something-goes-wrong" class="anchor" href="#what-if-something-goes-wrong" aria-hidden="true"><span class="octicon octicon-link"></span></a>What if something goes wrong?</h5>
+
+<p>Well.. at the time of this writing, the Wunderlist API isn't too helpful when it comes to error messages, so make sure you stick to the docs and ask any questions in the docs comment section.</p>
+
+<h4>
+<a id="progress" class="anchor" href="#progress" aria-hidden="true"><span class="octicon octicon-link"></span></a>Progress</h4>
+
+<ul>
+<li>Folder
+
+<ul>
+<li><del>Get all folders</del></li>
+<li><del>Get a folder</del></li>
+<li>Create a folder</li>
+<li>Update a folder</li>
+<li>Delete a folder</li>
+<li><del>Get folder revisions</del></li>
+</ul>
+</li>
+<li>Lists
+
+<ul>
+<li><del>Get all lists</del></li>
+<li><del>Get a list</del></li>
+<li>Create a list</li>
+<li>Update a list</li>
+<li>Make a list public</li>
+<li>Delete a list</li>
+</ul>
+</li>
+<li>Note
+
+<ul>
+<li><del>Get all notes</del></li>
+<li><del>Get a note</del></li>
+<li>Create a note</li>
+<li>Update a note</li>
+<li>Delete a note</li>
+</ul>
+</li>
+<li>Reminder
+
+<ul>
+<li><del>Get all reminders</del></li>
+<li>Create a reminder</li>
+<li>Update a reminder</li>
+<li>Delete a reminder</li>
+</ul>
+</li>
+<li>Subtask
+
+<ul>
+<li><del>Get all subtasks</del></li>
+<li><del>Get a subtask</del></li>
+<li>Create a subtask</li>
+<li>Update a subtask</li>
+<li>Delete a subtask</li>
+</ul>
+</li>
+<li>Task
+
+<ul>
+<li><del>Get all tasks</del></li>
+<li><del>Get all completed tasks</del></li>
+<li><del>Get a task</del></li>
+<li>Create a task</li>
+<li>Update a task</li>
+<li>Delete a task</li>
+</ul>
+</li>
+</ul>
+
+<p>Finished:</p>
+
+<ul>
+<li>Authorization</li>
+<li>User (except restricting the list of users a user can access by list)</li>
+<li>Webhook</li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/johnRivs/wunderlist">Wunderlist</a> is maintained by <a href="https://github.com/johnRivs">johnRivs</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
