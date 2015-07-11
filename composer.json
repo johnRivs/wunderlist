@@ -16,5 +16,8 @@
             "JohnRivs\\Wunderlist\\": "src/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "require-dev": {
+        "apigen/apigen": "^4.1"
+    }
 }
