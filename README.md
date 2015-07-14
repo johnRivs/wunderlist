@@ -3,6 +3,22 @@
 
 [http://johnrivs.github.io/wunderlist](http://johnrivs.github.io/wunderlist )
 
+- [How to use](#how-to-use )
+    - [Register your app](#register-your-app )
+    - [Install the package](#install-the-package )
+    - [Build up the client](#build-up-the-client )
+    - [Authorization](#authorization )
+- [FAQ](#faq )
+    - [What exactly is this pacakage?](#what-exactly-is-this-pacakage )
+    - [How flexible is this package?](#how-flexible-is-this-package )
+    - [What should I expect from the Wunderlist API?](#what-should-i-expect-from-the-wunderlist-api )
+    - [How does it look like?](#how-does-it-look-like )
+    - [How do I provide data?](#how-do-i-provide-data )
+    - [Why do some methods take more time than others?](#why-do-some-methods-take-more-time-than-others )
+    - [Why does it say Forbidden during authentication?](#why-does-it-say-forbidden-during-authentication )
+    - [What if something goes wrong?](#what-if-something-goes-wrong )
+- [Progress](#progress )
+
 ## How to use?
 ##### Register your app
 First of all, you need to register your app. To do that, go [here](https://developer.wunderlist.com/apps ), log in and click on the blue button that says 'CREATE APP'. Wunderlist will ask you about the name of the app, the description, an icon to represent the app, the URL where it is located and the callback URL for authorization.
