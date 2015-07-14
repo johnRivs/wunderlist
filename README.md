@@ -3,6 +3,68 @@
 
 [http://johnrivs.github.io/wunderlist](http://johnrivs.github.io/wunderlist )
 
+## How to use?
+##### Register your app
+First of all, you need to register your app. To do that, go [here](https://developer.wunderlist.com/apps ), log in and click on the blue button that says 'CREATE APP'. Wunderlist will ask you about the name of the app, the description, an icon to represent the app, the URL where it is located and the callback URL for authorization.
+
+If your app is not yet hosted on the Internet, set both the URL fields to `http://localhost`. You're only going to need a 'real' auth callback url when you need to set up authorization (more about this later).
+
+##### Install the package
+This package may be installed through [Composer](https://getcomposer.org/download/ ):
+```
+composer require johnrivs/wunderlist
+```
+If you're using a framework, everything in your `vendor` directory is most likely autoloaded for you. Otherwise, pull in the file yourself:
+```php
+<?php
+
+require_once __DIR__.'/path/to/vendor/autoload.php';
+```
+
+##### Build up the client
+Go back to [apps page](https://developer.wunderlist.com/apps ) and copy your app's 'CLIENT ID', 'CLIENT SECRET' and access token, which you can generate by clicking on 'CREATE ACCESS TOKEN':
+```php
+<?php 
+
+use JohnRivs\Wunderlist\Wunderlist;
+
+$clientId     = 'THE_CLIENT_ID';
+$clientSecret = 'THE_CLIENT_SECRET';
+$accessToken  = 'THE_ACCESS_TOKEN';
+
+$w = new Wunderlist($clientId, $clientSecret, $accessToken);
+
+$w->getCurrentUser();
+```
+
+##### Authorization
+For some methods (mostly the ones where you need to write, update or delete data), you're going to need a user access token. Up until this point you've only had the app access token, which you can use for yourself.
+
+First, redirect the user to Wunderlist, where they need to grant access to your app. Wunderlist needs 2 things: a random string passed to it and the callback URL. Make sure you temporarily save said random string (in a file or session):
+```php
+$state = md5(time());
+
+// Store the $state to retrieve it later
+
+// Redirect the user to:
+$w->authUrl($state, 'http://your-domain.com/auth/callback')
+```
+**Note: the URL you provide must be the same you set as your [app](https://developer.wunderlist.com/apps ) auth callback url.**
+
+If you're working locally, I recommend using [ngrok](https://ngrok.com/ ):
+- Spin up an HTTP server. In PHP via terminal `php -S localhost:8000`
+- Create the tunnel: `ngrok http localhost:8000`. It'll tell you where your website is publicly available, something like `http://96d15c39.ngrok.io`
+- Go to the [apps page](https://developer.wunderlist.com/apps ) and set the auth callback url to `http://96d15c39.ngrok.io/auth/callback` or whatever you got.
+- Use the same URL in your code: `$w->authUrl($state, 'http://96d15c39.ngrok.io/auth/callback')`
+
+**Ngrok gives you a different URL everytime you create the tunnel, so you'll need to update the auth callback url for your app and the one you provide to `authUrl()`.**
+
+Once the user grants access to your app, he's going to be redirected to the callback URL carrying a `code` and the `state`. It would look like `http://96d15c39.ngrok.io/auth/callback?code=random_string&state=the_state_from_the_previous_step`. Now retrieve the `$state` from earlier and compare it to `$_GET['state']`. If they're the same:
+```php
+$accessToken = $w->getAuthToken($_GET['code']);
+```
+And that's the user's access token.
+
 ## FAQ
 ##### What exactly is this pacakage?
 This package is a wrapper for each endpoint in the Wunderlist API. To know what attributes you need to provide to each method, the data it returns or what status code is set, head over to the [official Wunderlist API documentation](https://developer.wunderlist.com/documentation ).
@@ -70,6 +132,7 @@ Well.. at the time of this writing, the Wunderlist API isn't too helpful when it
     - Create a subtask
     - Update a subtask
     - Delete a subtask
+- Laravel integration
 
 Finished:
 - Authorization
