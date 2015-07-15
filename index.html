@@ -14,7 +14,6 @@
       <h1 class="project-name">Wunderlist</h1>
       <h2 class="project-tagline">SDK for the latest Wunderlist API version.</h2>
       <a href="https://github.com/johnRivs/wunderlist" class="btn">View on GitHub</a>
-      <a href="api-docs/" class="btn">API Docs</a>
       <a href="https://github.com/johnRivs/wunderlist/zipball/master" class="btn">Download .zip</a>
       <a href="https://github.com/johnRivs/wunderlist/tarball/master" class="btn">Download .tar.gz</a>
     </section>
@@ -23,7 +22,114 @@
       <h1>
 <a id="use-the-latest-wunderlist-api-version-in-your-apps" class="anchor" href="#use-the-latest-wunderlist-api-version-in-your-apps" aria-hidden="true"><span class="octicon octicon-link"></span></a>Use the latest Wunderlist API version in your apps.</h1>
 
-<p><a href="https://packagist.org/packages/johnrivs/wunderlist"><img src="https://poser.pugx.org/johnrivs/wunderlist/v/stable" alt="Latest Stable Version"></a> <a href="https://packagist.org/packages/johnrivs/wunderlist"><img src="https://poser.pugx.org/johnrivs/wunderlist/downloads" alt="Total Downloads"></a> <a href="https://packagist.org/packages/johnrivs/wunderlist"><img src="https://poser.pugx.org/johnrivs/wunderlist/license" alt="License"></a></p>
+<p><a href="https://packagist.org/packages/johnrivs/wunderlist"><img src="https://poser.pugx.org/johnrivs/wunderlist/v/stable" alt="Latest Stable Version"></a> <a href="https://packagist.org/packages/johnrivs/wunderlist"><img src="https://poser.pugx.org/johnrivs/wunderlist/downloads" alt="Total Downloads"></a> <a href="https://packagist.org/packages/johnrivs/wunderlist"><img src="https://poser.pugx.org/johnrivs/wunderlist/license" alt="License"></a> <a href="#progress"><img src="http://progressed.io/bar/45?title=progress" alt="Endpoint coverage"></a></p>
+
+<p><a href="http://johnrivs.github.io/wunderlist">http://johnrivs.github.io/wunderlist</a></p>
+
+<ul>
+<li>
+<a href="#how-to-use">How to use</a>
+
+<ul>
+<li><a href="#register-your-app">Register your app</a></li>
+<li><a href="#install-the-package">Install the package</a></li>
+<li><a href="#build-up-the-client">Build up the client</a></li>
+<li><a href="#authorization">Authorization</a></li>
+</ul>
+</li>
+<li>
+<a href="#faq">FAQ</a>
+
+<ul>
+<li><a href="#what-exactly-is-this-pacakage">What exactly is this pacakage?</a></li>
+<li><a href="#how-flexible-is-this-package">How flexible is this package?</a></li>
+<li><a href="#what-should-i-expect-from-the-wunderlist-api">What should I expect from the Wunderlist API?</a></li>
+<li><a href="#how-does-it-look-like">How does it look like?</a></li>
+<li><a href="#how-do-i-provide-data">How do I provide data?</a></li>
+<li><a href="#why-do-some-methods-take-more-time-than-others">Why do some methods take more time than others?</a></li>
+<li><a href="#why-does-it-say-forbidden-during-authentication">Why does it say Forbidden during authentication?</a></li>
+<li><a href="#what-if-something-goes-wrong">What if something goes wrong?</a></li>
+</ul>
+</li>
+<li><a href="#progress">Progress</a></li>
+</ul>
+
+<h2>
+<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use?</h2>
+
+<h5>
+<a id="register-your-app" class="anchor" href="#register-your-app" aria-hidden="true"><span class="octicon octicon-link"></span></a>Register your app</h5>
+
+<p>First of all, you need to register your app. To do that, go <a href="https://developer.wunderlist.com/apps">here</a>, log in and click on the blue button that says 'CREATE APP'. Wunderlist will ask you about the name of the app, the description, an icon to represent the app, the URL where it is located and the callback URL for authorization.</p>
+
+<p>If your app is not yet hosted on the Internet, set both the URL fields to <code>http://localhost</code>. You're only going to need a 'real' auth callback url when you need to set up authorization (more about this later).</p>
+
+<h5>
+<a id="install-the-package" class="anchor" href="#install-the-package" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install the package</h5>
+
+<p>This package may be installed through <a href="https://getcomposer.org/download/">Composer</a>:</p>
+
+<pre><code>composer require johnrivs/wunderlist
+</code></pre>
+
+<p>If you're using a framework, everything in your <code>vendor</code> directory is most likely autoloaded for you. Otherwise, pull in the file yourself:</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">require_once</span> <span class="pl-c1">__DIR__</span><span class="pl-k">.</span><span class="pl-s"><span class="pl-pds">'</span>/path/to/vendor/autoload.php<span class="pl-pds">'</span></span>;</span></pre></div>
+
+<h5>
+<a id="build-up-the-client" class="anchor" href="#build-up-the-client" aria-hidden="true"><span class="octicon octicon-link"></span></a>Build up the client</h5>
+
+<p>Go back to <a href="https://developer.wunderlist.com/apps">apps page</a> and copy your app's 'CLIENT ID', 'CLIENT SECRET' and access token, which you can generate by clicking on 'CREATE ACCESS TOKEN':</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-k">&lt;</span>?<span class="pl-c1">php</span> </span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">use</span> <span class="pl-c1">JohnRivs\Wunderlist\Wunderlist</span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$clientId</span>     <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>THE_CLIENT_ID<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1"><span class="pl-smi">$clientSecret</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>THE_CLIENT_SECRET<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1"><span class="pl-smi">$accessToken</span>  <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>THE_ACCESS_TOKEN<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$w</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">Wunderlist</span>(<span class="pl-smi">$clientId</span>, <span class="pl-smi">$clientSecret</span>, <span class="pl-smi">$accessToken</span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$w</span><span class="pl-k">-&gt;</span>getCurrentUser();</span></pre></div>
+
+<h5>
+<a id="authorization" class="anchor" href="#authorization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authorization</h5>
+
+<p>For some methods (mostly the ones where you need to write, update or delete data), you're going to need a user access token. Up until this point you've only had the app access token, which you can use for yourself.</p>
+
+<p>First, redirect the user to Wunderlist, where they need to grant access to your app. Wunderlist needs 2 things: a random string passed to it and the callback URL. Make sure you temporarily save said random string (in a file or session):</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-smi">$state</span> <span class="pl-k">=</span> <span class="pl-c1">md5</span>(<span class="pl-c1">time</span>());</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">// Store the $state to retrieve it later</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">// Redirect the user to:</span></span>
+<span class="pl-s1"><span class="pl-smi">$w</span><span class="pl-k">-&gt;</span>authUrl(<span class="pl-smi">$state</span>, <span class="pl-s"><span class="pl-pds">'</span>http://your-domain.com/auth/callback<span class="pl-pds">'</span></span>)</span></pre></div>
+
+<p><strong>Note: the URL you provide must be the same you set as your <a href="https://developer.wunderlist.com/apps">app</a> auth callback url.</strong></p>
+
+<p>If you're working locally, I recommend using <a href="https://ngrok.com/">ngrok</a>:</p>
+
+<ul>
+<li>Spin up an HTTP server. In PHP via terminal <code>php -S localhost:8000</code>
+</li>
+<li>Create the tunnel: <code>ngrok http localhost:8000</code>. It'll tell you where your website is publicly available, something like <code>http://96d15c39.ngrok.io</code>
+</li>
+<li>Go to the <a href="https://developer.wunderlist.com/apps">apps page</a> and set the auth callback url to <code>http://96d15c39.ngrok.io/auth/callback</code> or whatever you got.</li>
+<li>Use the same URL in your code: <code>$w-&gt;authUrl($state, 'http://96d15c39.ngrok.io/auth/callback')</code>
+</li>
+</ul>
+
+<p><strong>Ngrok gives you a different URL everytime you create the tunnel, so you'll need to update the auth callback url for your app and the one you provide to <code>authUrl()</code>.</strong></p>
+
+<p>Once the user grants access to your app, he's going to be redirected to the callback URL carrying a <code>code</code> and the <code>state</code>. It would look like <code>http://96d15c39.ngrok.io/auth/callback?code=random_string&amp;state=the_state_from_the_previous_step</code>. Now retrieve the <code>$state</code> from earlier and compare it to <code>$_GET['state']</code>. If they're the same:</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-smi">$accessToken</span> <span class="pl-k">=</span> <span class="pl-smi">$w</span><span class="pl-k">-&gt;</span>getAuthToken(<span class="pl-smi">$_GET</span>[<span class="pl-s"><span class="pl-pds">'</span>code<span class="pl-pds">'</span></span>]);</span></pre></div>
+
+<p>And that's the user's access token.</p>
 
 <h2>
 <a id="faq" class="anchor" href="#faq" aria-hidden="true"><span class="octicon octicon-link"></span></a>FAQ</h2>
@@ -76,14 +182,14 @@ Right now, this is how the interface looks:</p>
 <p>Due to the nature of the service, Wunderlist requires to keep everything in sync by providing the entity's <a href="https://developer.wunderlist.com/documentation/concepts/revisions">revision</a>. To achieve this, methods responsible for updating entities (such as tasks, lists...) will fetch the entity first and then perform a request to apply the changes.</p>
 
 <h5>
-<a id="why-does-it-say-forbidden-during-authentication" class="anchor" href="#why-does-it-say-forbidden-during-authentication" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why does it say `Forbidden` during authentication?</h5>
+<a id="why-does-it-say-forbidden-during-authentication" class="anchor" href="#why-does-it-say-forbidden-during-authentication" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why does it say <code>Forbidden</code> during authentication?</h5>
 
 <p>Make sure the auth callback URL you provide to <code>authUrl()</code> matches the one you have for your <a href="https://developer.wunderlist.com/apps">app</a>.</p>
 
 <h5>
 <a id="what-if-something-goes-wrong" class="anchor" href="#what-if-something-goes-wrong" aria-hidden="true"><span class="octicon octicon-link"></span></a>What if something goes wrong?</h5>
 
-<p>Well.. at the time of this writing, the Wunderlist API isn't too helpful when it comes to error messages, so make sure you stick to the docs and ask any questions in the docs, use <code>getStatusCode()</code> comment section.</p>
+<p>Well.. at the time of this writing, the Wunderlist API isn't too helpful when it comes to error messages, so make sure you stick to the docs, use <code>getStatusCode()</code> and ask any questions in the docs comment section.</p>
 
 <h4>
 <a id="progress" class="anchor" href="#progress" aria-hidden="true"><span class="octicon octicon-link"></span></a>Progress</h4>
@@ -129,6 +235,9 @@ Right now, this is how the interface looks:</p>
 <li>Delete a subtask</li>
 </ul>
 </li>
+<li>Some other endpoints (not started)</li>
+<li>Laravel integration</li>
+<li>Silex integration</li>
 </ul>
 
 <p>Finished:</p>
