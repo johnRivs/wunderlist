@@ -112,7 +112,7 @@ $wunderlist->lists()->all()->tasks()->first();
 If you've ever used [Laravel's Eloquent](http://laravel.com/docs/5.1/eloquent ), you can probably see where I'd take the inspiration from..
 
 ##### How do I provide data?
-For most methods you'll need to provide an array of attributes, however, for certain ones you'll need to supply some value(s). Check the [API Docs](http://johnrivs.github.io/wunderlist/api-docs/index.html ) out to know what each method expects.
+For most methods you'll need to provide an array of attributes, however, for certain ones you'll need to supply some value(s). Check the [API Docs](http://johnrivs.github.io/wunderlist/api-docs/ ) out to know what each method expects.
 
 ##### Why do some methods take more time than others?
 Due to the nature of the service, Wunderlist requires to keep everything in sync by providing the entity's [revision](https://developer.wunderlist.com/documentation/concepts/revisions ). To achieve this, methods responsible for updating entities (such as tasks, lists...) will fetch the entity first and then perform a request to apply the changes.
