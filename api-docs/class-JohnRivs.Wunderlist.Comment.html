@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Trait JohnRivs\Wunderlist\Task</title>
+	<title>Trait JohnRivs\Wunderlist\Comment</title>
 
 	<link rel="stylesheet" href="resources/style.css?95ada9fb523b6ab4fd1c47bb375f713f2cc65542">
 
@@ -47,13 +47,13 @@
 			<ul>
 				<li><a href="class-JohnRivs.Wunderlist.Authorization.html">Authorization</a></li>
 				<li><a href="class-JohnRivs.Wunderlist.Avatar.html">Avatar</a></li>
-				<li><a href="class-JohnRivs.Wunderlist.Comment.html">Comment</a></li>
+				<li class="active"><a href="class-JohnRivs.Wunderlist.Comment.html">Comment</a></li>
 				<li><a href="class-JohnRivs.Wunderlist.Folder.html">Folder</a></li>
 				<li><a href="class-JohnRivs.Wunderlist.Lists.html">Lists</a></li>
 				<li><a href="class-JohnRivs.Wunderlist.Note.html">Note</a></li>
 				<li><a href="class-JohnRivs.Wunderlist.Reminder.html">Reminder</a></li>
 				<li><a href="class-JohnRivs.Wunderlist.Subtask.html">Subtask</a></li>
-				<li class="active"><a href="class-JohnRivs.Wunderlist.Task.html">Task</a></li>
+				<li><a href="class-JohnRivs.Wunderlist.Task.html">Task</a></li>
 				<li><a href="class-JohnRivs.Wunderlist.User.html">User</a></li>
 				<li><a href="class-JohnRivs.Wunderlist.Webhook.html">Webhook</a></li>
 			</ul>
@@ -92,7 +92,7 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Trait Task</h1>
+	<h1>Trait Comment</h1>
 
 
 
@@ -114,7 +114,7 @@
 		<b>Namespace:</b> <a href="namespace-JohnRivs.html">JohnRivs</a>\<a href="namespace-JohnRivs.Wunderlist.html">Wunderlist</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-JohnRivs.Wunderlist.Task.html#3-81" title="Go to source code">Task.php</a>
+			<b>Located at</b> <a href="source-class-JohnRivs.Wunderlist.Comment.html#3-43" title="Go to source code">Comment.php</a>
 		<br>
 	</div>
 
@@ -122,7 +122,7 @@
 
 	<table class="summary methods" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="getTasks" id="_getTasks">
+	<tr data-order="getComments" id="_getComments">
 
 		<td class="attributes"><code>
 			 public 
@@ -133,19 +133,21 @@
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getTasks">#</a>
-		<code><a href="source-class-JohnRivs.Wunderlist.Task.html#5-21" title="Go to source code">getTasks</a>( <span>array <var>$attributes</var> = []</span> )</code>
+		<a class="anchor" href="#_getComments">#</a>
+		<code><a href="source-class-JohnRivs.Wunderlist.Comment.html#5-17" title="Go to source code">getComments</a>( <span>string <var>$entity</var></span>, <span>array <var>$attributes</var> = []</span> )</code>
 
 		<div class="description short">
-			<p>Show all the tasks from a list.</p>
+			<p>Show all the comments in a list or task.</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Show all the tasks from a list.</p>
+			<p>Show all the comments in a list or task.</p>
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
+					<dt><var>$entity</var></dt>
+					<dd>A list or a task.</dd>
 					<dt><var>$attributes</var></dt>
 					<dd></dd>
 				</dl></div>
@@ -161,7 +163,7 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getTask" id="_getTask">
+	<tr data-order="getComment" id="_getComment">
 
 		<td class="attributes"><code>
 			 public 
@@ -172,21 +174,21 @@
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getTask">#</a>
-		<code><a href="source-class-JohnRivs.Wunderlist.Task.html#23-32" title="Go to source code">getTask</a>( <span>integer <var>$taskId</var></span> )</code>
+		<a class="anchor" href="#_getComment">#</a>
+		<code><a href="source-class-JohnRivs.Wunderlist.Comment.html#19-28" title="Go to source code">getComment</a>( <span>integer <var>$commentId</var></span> )</code>
 
 		<div class="description short">
-			<p>Show a task from a list.</p>
+			<p>Show a comment.</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Show a task from a list.</p>
+			<p>Show a comment.</p>
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$taskId</var></dt>
-					<dd>The id of the task.</dd>
+					<dt><var>$commentId</var></dt>
+					<dd>The id of the comment.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -200,7 +202,7 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="createTask" id="_createTask">
+	<tr data-order="createComment" id="_createComment">
 
 		<td class="attributes"><code>
 			 public 
@@ -211,101 +213,19 @@
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_createTask">#</a>
-		<code><a href="source-class-JohnRivs.Wunderlist.Task.html#34-45" title="Go to source code">createTask</a>( <span>array <var>$attributes</var> = []</span> )</code>
+		<a class="anchor" href="#_createComment">#</a>
+		<code><a href="source-class-JohnRivs.Wunderlist.Comment.html#30-41" title="Go to source code">createComment</a>( <span>array <var>$attributes</var> = []</span> )</code>
 
 		<div class="description short">
-			<p>Create a new task for a list.</p>
+			<p>Create a new comment for a task.</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Create a new task for a list.</p>
+			<p>Create a new comment for a task.</p>
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$attributes</var></dt>
-					<dd></dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					array
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="updateTask" id="_updateTask">
-
-		<td class="attributes"><code>
-			 public 
-
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_updateTask">#</a>
-		<code><a href="source-class-JohnRivs.Wunderlist.Task.html#47-61" title="Go to source code">updateTask</a>( <span>integer <var>$taskId</var></span>, <span>array <var>$attributes</var> = []</span> )</code>
-
-		<div class="description short">
-			<p>Update a task.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Update a task.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$taskId</var></dt>
-					<dd>The id of the task.</dd>
-					<dt><var>$attributes</var></dt>
-					<dd></dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					array
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="deleteTask" id="_deleteTask">
-
-		<td class="attributes"><code>
-			 public 
-
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_deleteTask">#</a>
-		<code><a href="source-class-JohnRivs.Wunderlist.Task.html#63-79" title="Go to source code">deleteTask</a>( <span>integer <var>$taskId</var></span>, <span>array <var>$attributes</var> = []</span> )</code>
-
-		<div class="description short">
-			<p>Delete a task.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Delete a task.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$taskId</var></dt>
-					<dd>The id of the task.</dd>
 					<dt><var>$attributes</var></dt>
 					<dd></dd>
 				</dl></div>
