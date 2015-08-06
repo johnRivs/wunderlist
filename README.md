@@ -142,12 +142,6 @@ Well.. at the time of this writing, the Wunderlist API isn't too helpful when it
     - Create a reminder
     - Update a reminder
     - Delete a reminder
-- Subtask
-    - ~~Get all subtasks~~
-    - ~~Get a subtask~~
-    - Create a subtask
-    - Update a subtask
-    - Delete a subtask
 - Some other endpoints (not started)
 - Laravel integration
 - Silex integration
@@ -156,6 +150,7 @@ Finished:
 - Authorization
 - Avatar
 - Lists
+- Subtask
 - Task
 - Comment
 - User (except restricting the list of users a user can access by list)

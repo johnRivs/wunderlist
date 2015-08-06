@@ -4,7 +4,7 @@ trait Avatar {
 
     /**
      * Show the avatar URL of a given user.
-     * 
+     *
      * @param  array $attributes
      * @return string
      */
@@ -12,11 +12,6 @@ trait Avatar {
     {
         if ( ! isset($attributes['user_id'])) {
             $attributes['user_id'] = $this->getCurrentUser()['id'];
-        }
-
-        // Convert the 'fallback' attribute to a string
-        if (isset($attributes['fallback'])) {
-            $attributes['fallback'] = var_export($attributes['fallback'], true);
         }
 
         $this->requires(['user_id'], $attributes);
@@ -27,5 +22,5 @@ trait Avatar {
             'verify' => false
         ])->getEffectiveUrl();
     }
- 
+
 }

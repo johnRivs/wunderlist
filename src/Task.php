@@ -4,7 +4,7 @@ trait Task {
 
     /**
      * Show all the tasks from a list.
-     * 
+     *
      * @param  array $attributes
      * @return array
      */
@@ -22,7 +22,7 @@ trait Task {
 
     /**
      * Show a task from a list.
-     * 
+     *
      * @param  int $taskId The id of the task.
      * @return array
      */
@@ -33,7 +33,7 @@ trait Task {
 
     /**
      * Create a new task for a list.
-     * 
+     *
      * @param  array $attributes
      * @return array
      */
@@ -62,12 +62,11 @@ trait Task {
 
     /**
      * Delete a task.
-     * 
+     *
      * @param  int $taskId The id of the task.
-     * @param  array $attributes
      * @return array
      */
-    public function deleteTask($taskId, array $attributes = [])
+    public function deleteTask($taskId)
     {
         $attributes['revision'] = $this->getTask($taskId)['revision'];
 
@@ -77,5 +76,5 @@ trait Task {
 
         return $this->getStatusCode();
     }
- 
+
 }
