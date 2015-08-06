@@ -1,5 +1,5 @@
 # Use the latest Wunderlist API version in your apps.
-[![Latest Stable Version](https://poser.pugx.org/johnrivs/wunderlist/v/stable)](https://packagist.org/packages/johnrivs/wunderlist) [![Total Downloads](https://poser.pugx.org/johnrivs/wunderlist/downloads)](https://packagist.org/packages/johnrivs/wunderlist) [![License](https://poser.pugx.org/johnrivs/wunderlist/license)](https://packagist.org/packages/johnrivs/wunderlist) [![Endpoint coverage](http://progressed.io/bar/54?title=progress)](#progress )
+[![Latest Stable Version](https://poser.pugx.org/johnrivs/wunderlist/v/stable)](https://packagist.org/packages/johnrivs/wunderlist) [![Total Downloads](https://poser.pugx.org/johnrivs/wunderlist/downloads)](https://packagist.org/packages/johnrivs/wunderlist) [![License](https://poser.pugx.org/johnrivs/wunderlist/license)](https://packagist.org/packages/johnrivs/wunderlist) [![Endpoint coverage](http://progressed.io/bar/63?title=progress)](#progress )
 
 [http://johnrivs.github.io/wunderlist](http://johnrivs.github.io/wunderlist )
 
@@ -131,12 +131,6 @@ Well.. at the time of this writing, the Wunderlist API isn't too helpful when it
     - Update a folder
     - Delete a folder
     - ~~Get folder revisions~~
-- Note
-    - ~~Get all notes~~
-    - ~~Get a note~~
-    - Create a note
-    - Update a note
-    - Delete a note
 - Reminder
     - ~~Get all reminders~~
     - Create a reminder
@@ -150,6 +144,7 @@ Finished:
 - Authorization
 - Avatar
 - Lists
+- Note
 - Subtask
 - Task
 - Comment

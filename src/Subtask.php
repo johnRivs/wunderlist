@@ -60,7 +60,7 @@ trait Subtask {
      * Delete a subtask.
      *
      * @param  int $subtaskId The id of the subtask.
-     * @return array
+     * @return int
      */
     public function deleteSubtask($subtaskId)
     {
