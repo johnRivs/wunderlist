@@ -109,7 +109,7 @@ class Wunderlist {
     {
         if (empty($this->statusCode)) throw new Exception('An HTTP status code has not been set. Make sure you ask for this AFTER you make a request to the API.');
 
-        return $this->statusCode;
+        return (int) $this->statusCode;
     }
 
     /**
