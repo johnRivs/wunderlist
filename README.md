@@ -1,5 +1,5 @@
 # Use the latest Wunderlist API version in your apps.
-[![Latest Stable Version](https://poser.pugx.org/johnrivs/wunderlist/v/stable)](https://packagist.org/packages/johnrivs/wunderlist) [![Total Downloads](https://poser.pugx.org/johnrivs/wunderlist/downloads)](https://packagist.org/packages/johnrivs/wunderlist) [![License](https://poser.pugx.org/johnrivs/wunderlist/license)](https://packagist.org/packages/johnrivs/wunderlist) [![Endpoint coverage](http://progressed.io/bar/63?title=progress)](#progress )
+[![Latest Stable Version](https://poser.pugx.org/johnrivs/wunderlist/v/stable)](https://packagist.org/packages/johnrivs/wunderlist) [![Total Downloads](https://poser.pugx.org/johnrivs/wunderlist/downloads)](https://packagist.org/packages/johnrivs/wunderlist) [![License](https://poser.pugx.org/johnrivs/wunderlist/license)](https://packagist.org/packages/johnrivs/wunderlist) [![Endpoint coverage](http://progressed.io/bar/72?title=progress)](#progress )
 
 [http://johnrivs.github.io/wunderlist](http://johnrivs.github.io/wunderlist )
 
@@ -124,13 +124,6 @@ Make sure the auth callback URL you provide to `authUrl()` matches the one you h
 Well.. at the time of this writing, the Wunderlist API isn't too helpful when it comes to error messages, so make sure you stick to the docs, use `getStatusCode()` and ask any questions in the docs comment section.
 
 #### Progress
-- Folder
-    - ~~Get all folders~~
-    - ~~Get a folder~~
-    - Create a folder
-    - Update a folder
-    - Delete a folder
-    - ~~Get folder revisions~~
 - Reminder
     - ~~Get all reminders~~
     - Create a reminder
@@ -143,6 +136,7 @@ Well.. at the time of this writing, the Wunderlist API isn't too helpful when it
 Finished:
 - Authorization
 - Avatar
+- Folder
 - Lists
 - Note
 - Subtask
