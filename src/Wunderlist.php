@@ -7,6 +7,7 @@ class Wunderlist {
 
     use Authorization,
         Avatar,
+        File,
         Folder,
         Lists,
         Note,
@@ -142,15 +143,22 @@ class Wunderlist {
      * 
      * @param  array  $requirements A list of required attributes.
      * @param  array  $attributes   The provided attributes
-     * @return \Exception
+     * @param  bool   $exception    Call exception or return boolean.
+     * @return \Exception|bool
      */
-    protected function requires(array $requirements, array $attributes)
+    protected function requires(array $requirements, array $attributes, $exception = true)
     {
         foreach ($requirements as $required) {
             if ( ! array_key_exists($required, $attributes)) {
-                throw new Exception("The '{$required}' attribute is required.");
+	            if ($exception) {
+	                throw new Exception("The '{$required}' attribute is required.");
+	            } else {
+		            return false;
+	            }
             }
         }
+        
+        return true;
     }
     
 }
