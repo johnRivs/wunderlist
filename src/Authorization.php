@@ -28,14 +28,14 @@ trait Authorization {
      */
     public function getAuthToken($code)
     {
-        return $this->http->post('https://www.wunderlist.com/oauth/access_token', [
+        return \GuzzleHttp\json_decode($this->http->post('https://www.wunderlist.com/oauth/access_token', [
             'body' => [
                 'client_id' => $this->clientId,
                 'client_secret' => $this->clientSecret,
                 'code' => $code
             ],
             'verify' => false
-        ])->json()['access_token'];
+        ])->getBody())['access_token'];
     }
  
 }

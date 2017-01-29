@@ -86,19 +86,16 @@ class Wunderlist {
             'headers' => $this->getHeaders(),
         ]);
 
-        // We build the request
+        // We send the request
         // passing any parameter (if any).
-        $request = $this->http->createRequest($httpMethod, $this->baseUrl . $endpoint, $parameters);
-
-        // We send the request.
-        $response = $this->http->send($request);
+        $response = $this->http->request($httpMethod, $this->baseUrl . $endpoint, $parameters);
 
         // We store the returned HTTP status code
         // in case it's needed.
         $this->statusCode = $response->getStatusCode();
 
         // Finally, we return the contents of the response.
-        return $response->json();
+        return \GuzzleHttp\json_decode($response->getBody(), true);
     }
 
     /**
