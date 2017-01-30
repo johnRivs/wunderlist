@@ -71,6 +71,7 @@ class Wunderlist {
 
     public function __construct($clientId, $clientSecret, $accessToken, $useExceptions = true)
     {
+        $this->clientId      = $clientId;
         $this->clientSecret  = $clientSecret;
         $this->accessToken   = $accessToken;
         $this->useExceptions = $useExceptions;
