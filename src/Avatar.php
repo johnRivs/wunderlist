@@ -1,5 +1,7 @@
 <?php namespace JohnRivs\Wunderlist;
 
+use GuzzleHttp\TransferStats;
+
 trait Avatar {
 
     /**
@@ -16,11 +18,16 @@ trait Avatar {
 
         $this->requires(['user_id'], $attributes);
 
-        return $this->http->get("{$this->baseUrl}avatar", [
-            'headers' => $this->getHeaders(),
-            'query' => $attributes,
-            'verify' => false
-        ])->getEffectiveUrl();
+        $this->http->get("{$this->baseUrl}avatar", [
+            'headers'  => $this->getHeaders(),
+            'query'    => $attributes,
+            'verify'   => false,
+            'on_stats' => function(TransferStats $stats) use (&$url) {
+                $url = $stats->getEffectiveUri();
+            }
+        ]);
+
+        return (string) $url;
     }
 
 }
