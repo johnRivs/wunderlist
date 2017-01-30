@@ -155,7 +155,7 @@ class Wunderlist {
     protected function requires(array $requirements, array $attributes)
     {
         foreach ($requirements as $required) {
-            if ( ! array_key_exists($required, $attributes) && $this->useException) {
+            if ( ! array_key_exists($required, $attributes) && $this->useExceptions) {
 	            throw new Exception("The '{$required}' attribute is required.");
             }
         }
