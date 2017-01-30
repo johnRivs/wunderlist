@@ -5,7 +5,7 @@
 
 	<title>Class JohnRivs\Wunderlist\Wunderlist</title>
 
-	<link rel="stylesheet" href="resources/style.css?95ada9fb523b6ab4fd1c47bb375f713f2cc65542">
+	<link rel="stylesheet" href="resources/style.css?c2f33731c1948fbed7c333554678bfa68d4817da">
 
 </head>
 
@@ -48,6 +48,7 @@
 				<li><a href="class-JohnRivs.Wunderlist.Authorization.html">Authorization</a></li>
 				<li><a href="class-JohnRivs.Wunderlist.Avatar.html">Avatar</a></li>
 				<li><a href="class-JohnRivs.Wunderlist.Comment.html">Comment</a></li>
+				<li><a href="class-JohnRivs.Wunderlist.File.html">File</a></li>
 				<li><a href="class-JohnRivs.Wunderlist.Folder.html">Folder</a></li>
 				<li><a href="class-JohnRivs.Wunderlist.Lists.html">Lists</a></li>
 				<li><a href="class-JohnRivs.Wunderlist.Note.html">Note</a></li>
@@ -105,6 +106,8 @@
 			
 					<a href="class-JohnRivs.Wunderlist.Avatar.html"><span>JohnRivs\Wunderlist\Avatar</span></a>, 
 			
+					<a href="class-JohnRivs.Wunderlist.File.html"><span>JohnRivs\Wunderlist\File</span></a>, 
+			
 					<a href="class-JohnRivs.Wunderlist.Folder.html"><span>JohnRivs\Wunderlist\Folder</span></a>, 
 			
 					<a href="class-JohnRivs.Wunderlist.Lists.html"><span>JohnRivs\Wunderlist\Lists</span></a>, 
@@ -139,7 +142,7 @@
 		<b>Namespace:</b> <a href="namespace-JohnRivs.html">JohnRivs</a>\<a href="namespace-JohnRivs.Wunderlist.html">Wunderlist</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#6-156" title="Go to source code">Wunderlist.php</a>
+			<b>Located at</b> <a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#7-163" title="Go to source code">Wunderlist.php</a>
 		<br>
 	</div>
 
@@ -159,7 +162,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#62-69" title="Go to source code">__construct</a>( <span> <var>$clientId</var></span>, <span> <var>$clientSecret</var></span>, <span> <var>$accessToken</var></span> )</code>
+		<code><a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#72-79" title="Go to source code">__construct</a>( <span> <var>$clientId</var></span>, <span> <var>$clientSecret</var></span>, <span> <var>$accessToken</var></span>, <span> <var>$useExceptions</var> = <span class="php-keyword1">true</span></span> )</code>
 
 		<div class="description short">
 			
@@ -189,7 +192,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_call">#</a>
-		<code><a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#71-101" title="Go to source code">call</a>( <span>string <var>$httpMethod</var></span>, <span>string <var>$endpoint</var></span>, <span>array <var>$parameters</var> = []</span> )</code>
+		<code><a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#81-108" title="Go to source code">call</a>( <span>string <var>$httpMethod</var></span>, <span>string <var>$endpoint</var></span>, <span>array <var>$parameters</var> = []</span> )</code>
 
 		<div class="description short">
 			<p>Master call. It makes the requests to the Wunderlist API endpoints.</p>
@@ -232,7 +235,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getStatusCode">#</a>
-		<code><a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#103-113" title="Go to source code">getStatusCode</a>( )</code>
+		<code><a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#110-120" title="Go to source code">getStatusCode</a>( )</code>
 
 		<div class="description short">
 			<p>Get the HTTP status code from the last response.</p>
@@ -266,7 +269,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getHttpClient">#</a>
-		<code><a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#115-123" title="Go to source code">getHttpClient</a>( )</code>
+		<code><a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#122-130" title="Go to source code">getHttpClient</a>( )</code>
 
 		<div class="description short">
 			<p>Get a fresh instance of the Guzzle HTTP client.</p>
@@ -300,7 +303,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getHeaders">#</a>
-		<code><a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#125-138" title="Go to source code">getHeaders</a>( )</code>
+		<code><a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#132-145" title="Go to source code">getHeaders</a>( )</code>
 
 		<div class="description short">
 			<p>The headers needed for (almost) every request
@@ -329,14 +332,14 @@ to the Wunderlist API.</p>
 		<td class="attributes"><code>
 			 protected 
 
-			Exception
+			Exception|boolean
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_requires">#</a>
-		<code><a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#140-154" title="Go to source code">requires</a>( <span>array <var>$requirements</var></span>, <span>array <var>$attributes</var></span> )</code>
+		<code><a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#147-162" title="Go to source code">requires</a>( <span>array <var>$requirements</var></span>, <span>array <var>$attributes</var></span>, <span>boolean <var>$exception</var>,…</span> )</code>
 
 		<div class="description short">
 			<p>Checks if the provided attributes contain certain fields.</p>
@@ -352,11 +355,13 @@ to the Wunderlist API.</p>
 					<dd>A list of required attributes.</dd>
 					<dt><var>$attributes</var></dt>
 					<dd>The provided attributes</dd>
+					<dt><var>$exception</var>,…</dt>
+					<dd>Call exception or return boolean.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					Exception
+					Exception|boolean
 				</div>
 
 
@@ -386,12 +391,26 @@ to the Wunderlist API.</p>
 	</tr>
 	</table>
 	<table class="summary used">
+	<caption>Methods used from <a href="class-JohnRivs.Wunderlist.File.html#methods">JohnRivs\Wunderlist\File</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-JohnRivs.Wunderlist.File.html#_createFile">createFile()</a>, 
+			<a href="class-JohnRivs.Wunderlist.File.html#_deleteFile">deleteFile()</a>, 
+			<a href="class-JohnRivs.Wunderlist.File.html#_getFile">getFile()</a>, 
+			<a href="class-JohnRivs.Wunderlist.File.html#_getFiles">getFiles()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary used">
 	<caption>Methods used from <a href="class-JohnRivs.Wunderlist.Folder.html#methods">JohnRivs\Wunderlist\Folder</a></caption>
 	<tr>
 		<td><code>
+			<a href="class-JohnRivs.Wunderlist.Folder.html#_createFolder">createFolder()</a>, 
+			<a href="class-JohnRivs.Wunderlist.Folder.html#_deleteFolder">deleteFolder()</a>, 
 			<a href="class-JohnRivs.Wunderlist.Folder.html#_getFolder">getFolder()</a>, 
 			<a href="class-JohnRivs.Wunderlist.Folder.html#_getFolderRevisions">getFolderRevisions()</a>, 
-			<a href="class-JohnRivs.Wunderlist.Folder.html#_getFolders">getFolders()</a>
+			<a href="class-JohnRivs.Wunderlist.Folder.html#_getFolders">getFolders()</a>, 
+			<a href="class-JohnRivs.Wunderlist.Folder.html#_updateFolder">updateFolder()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -412,8 +431,12 @@ to the Wunderlist API.</p>
 	<caption>Methods used from <a href="class-JohnRivs.Wunderlist.Note.html#methods">JohnRivs\Wunderlist\Note</a></caption>
 	<tr>
 		<td><code>
+			<a href="class-JohnRivs.Wunderlist.Note.html#_createNote">createNote()</a>, 
+			<a href="class-JohnRivs.Wunderlist.Note.html#_deleteNote">deleteNote()</a>, 
+			<a href="class-JohnRivs.Wunderlist.Note.html#_deleteNotes">deleteNotes()</a>, 
 			<a href="class-JohnRivs.Wunderlist.Note.html#_getNote">getNote()</a>, 
-			<a href="class-JohnRivs.Wunderlist.Note.html#_getNotes">getNotes()</a>
+			<a href="class-JohnRivs.Wunderlist.Note.html#_getNotes">getNotes()</a>, 
+			<a href="class-JohnRivs.Wunderlist.Note.html#_updateNote">updateNote()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -498,7 +521,7 @@ to the Wunderlist API.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#20-25" title="Go to source code"><var>$baseUrl</var></a>
+				<a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#22-27" title="Go to source code"><var>$baseUrl</var></a>
 
 			<div class="description short">
 				<p>Base URL for the Wunderlist API.</p>
@@ -523,7 +546,7 @@ to the Wunderlist API.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#27-32" title="Go to source code"><var>$statusCode</var></a>
+				<a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#29-34" title="Go to source code"><var>$statusCode</var></a>
 
 			<div class="description short">
 				<p>HTTP status code returned by each request.</p>
@@ -548,7 +571,7 @@ to the Wunderlist API.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#34-39" title="Go to source code"><var>$http</var></a>
+				<a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#36-41" title="Go to source code"><var>$http</var></a>
 
 			<div class="description short">
 				<p>HTTP Client.</p>
@@ -573,7 +596,7 @@ to the Wunderlist API.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#41-46" title="Go to source code"><var>$clientId</var></a>
+				<a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#43-48" title="Go to source code"><var>$clientId</var></a>
 
 			<div class="description short">
 				<p>The Wunderlist app client id.</p>
@@ -598,7 +621,7 @@ to the Wunderlist API.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#48-53" title="Go to source code"><var>$clientSecret</var></a>
+				<a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#50-55" title="Go to source code"><var>$clientSecret</var></a>
 
 			<div class="description short">
 				<p>The Wunderlist app client secret.</p>
@@ -623,7 +646,7 @@ to the Wunderlist API.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#55-60" title="Go to source code"><var>$accessToken</var></a>
+				<a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#57-62" title="Go to source code"><var>$accessToken</var></a>
 
 			<div class="description short">
 				<p>The Wunderlist app access token.</p>
@@ -637,6 +660,33 @@ to the Wunderlist API.</p>
 		<td class="value">
 			<div>
 				<a href="#$accessToken" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="useExceptions" id="$useExceptions">
+		<td class="attributes"><code>
+			protected  
+			boolean
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-JohnRivs.Wunderlist.Wunderlist.html#64-70" title="Go to source code"><var>$useExceptions</var></a>
+
+			<div class="description short">
+				<p>Whether or not the package should throw exceptions
+when parameters are missing.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Whether or not the package should throw exceptions
+when parameters are missing.</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$useExceptions" class="anchor">#</a>
 				<code></code>
 			</div>
 		</td>
