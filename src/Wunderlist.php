@@ -61,13 +61,21 @@ class Wunderlist {
      */
     protected $accessToken;
 
-    public function __construct($clientId, $clientSecret, $accessToken)
-    {
-        $this->clientId     = $clientId;
-        $this->clientSecret = $clientSecret;
-        $this->accessToken  = $accessToken;
+    /**
+     * Whether or not the package should throw exceptions
+     * when parameters are missing.
+     *
+     * @var bool
+     */
+    protected $useExceptions;
 
-        $this->http         = $this->getHttpClient();
+    public function __construct($clientId, $clientSecret, $accessToken, $useExceptions = true)
+    {
+        $this->clientSecret  = $clientSecret;
+        $this->accessToken   = $accessToken;
+        $this->useExceptions = $useExceptions;
+
+        $this->http = $this->getHttpClient();
     }
 
     /**
@@ -144,11 +152,11 @@ class Wunderlist {
      * @param  bool   $exception    Call exception or return boolean.
      * @return \Exception|bool
      */
-    protected function requires(array $requirements, array $attributes, $exception = true)
+    protected function requires(array $requirements, array $attributes)
     {
         foreach ($requirements as $required) {
             if ( ! array_key_exists($required, $attributes)) {
-	            if ($exception) {
+	            if ($this->useException) {
 	                throw new Exception("The '{$required}' attribute is required.");
 	            } else {
 		            return false;
