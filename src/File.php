@@ -5,17 +5,13 @@ trait File {
     /**
      * Show all the files from a list or from a task.
      *
+     * @param  string $entity A list or a task.
      * @param  array $attributes
      * @return array
      */
-    public function getFiles(array $attributes = [])
+    public function getFiles($entity, array $attributes = [])
     {
-        if (
-        	!$this->requires(['task_id'], $attributes) &&
-        	!$this->requires(['list_id'], $attributes)
-        ) {
-	        throw new Exception("The 'task_id' or 'list_id' attributes is required.");
-        }
+        $this->requires(["{$entity}_id"], $attributes);
 
         return $this->call('GET', 'files', ['query' => $attributes]);
     }
