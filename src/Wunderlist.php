@@ -1,6 +1,7 @@
 <?php namespace JohnRivs\Wunderlist;
 
 use Exception;
+use GuzzleHttp\json_decode;
 use GuzzleHttp\Client as HttpClient;
 
 class Wunderlist {
@@ -20,42 +21,42 @@ class Wunderlist {
 
     /**
      * Base URL for the Wunderlist API.
-     * 
+     *
      * @var string
      */
     protected $baseUrl = 'http://a.wunderlist.com/api/v1/';
 
     /**
      * HTTP status code returned by each request.
-     * 
+     *
      * @var int
      */
     protected $statusCode;
 
     /**
      * HTTP Client.
-     * 
+     *
      * @var \Guzzlehttp\Client
      */
     protected $http;
 
     /**
      * The Wunderlist app client id.
-     * 
+     *
      * @var string
      */
     public $clientId;
 
     /**
      * The Wunderlist app client secret.
-     * 
+     *
      * @var string
      */
     public $clientSecret;
 
     /**
      * The Wunderlist app access token.
-     * 
+     *
      * @var string
      */
     protected $accessToken;
@@ -71,7 +72,7 @@ class Wunderlist {
 
     /**
      * Master call. It makes the requests to the Wunderlist API endpoints.
-     * 
+     *
      * @param  string $httpMethod
      * @param  string $endpoint
      * @param  array  $parameters
@@ -95,12 +96,12 @@ class Wunderlist {
         $this->statusCode = $response->getStatusCode();
 
         // Finally, we return the contents of the response.
-        return \GuzzleHttp\json_decode($response->getBody(), true);
+        return json_decode($response->getBody(), true);
     }
 
     /**
      * Get the HTTP status code from the last response.
-     * 
+     *
      * @return int
      */
     public function getStatusCode()
@@ -112,7 +113,7 @@ class Wunderlist {
 
     /**
      * Get a fresh instance of the Guzzle HTTP client.
-     * 
+     *
      * @return \GuzzleHttp\Client
      */
     protected function getHttpClient()
@@ -123,7 +124,7 @@ class Wunderlist {
     /**
      * The headers needed for (almost) every request
      * to the Wunderlist API.
-     * 
+     *
      * @return array
      */
     protected function getHeaders()
@@ -137,7 +138,7 @@ class Wunderlist {
 
     /**
      * Checks if the provided attributes contain certain fields.
-     * 
+     *
      * @param  array  $requirements A list of required attributes.
      * @param  array  $attributes   The provided attributes
      * @param  bool   $exception    Call exception or return boolean.
@@ -154,8 +155,8 @@ class Wunderlist {
 	            }
             }
         }
-        
+
         return true;
     }
-    
+
 }

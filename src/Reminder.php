@@ -4,7 +4,7 @@ trait Reminder {
 
     /**
      * Show all the reminders in a list or task.
-     * 
+     *
      * @param  string $entity A list or a task.
      * @param  array $attributes
      * @return array
@@ -15,5 +15,5 @@ trait Reminder {
 
         return $this->call('GET', 'reminders', ['query' => $attributes]);
     }
- 
+
 }

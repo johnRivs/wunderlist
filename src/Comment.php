@@ -4,7 +4,7 @@ trait Comment {
 
     /**
      * Show all the comments in a list or task.
-     * 
+     *
      * @param  string $entity A list or a task.
      * @param  array $attributes
      * @return array
@@ -18,7 +18,7 @@ trait Comment {
 
     /**
      * Show a comment.
-     * 
+     *
      * @param  int $commentId The id of the comment.
      * @return array
      */
@@ -29,7 +29,7 @@ trait Comment {
 
     /**
      * Create a new comment for a task.
-     * 
+     *
      * @param  array $attributes
      * @return array
      */
@@ -39,5 +39,5 @@ trait Comment {
 
         return $this->call('POST', 'task_comments', ['json' => $attributes]);
     }
- 
+
 }

@@ -14,12 +14,12 @@ trait User {
 
     /**
      * Show the users this user can access.
-     * 
+     *
      * @return array
      */
     public function getUsers()
     {
         return $this->call('GET', 'users');
     }
- 
+
 }

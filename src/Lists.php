@@ -4,7 +4,7 @@ trait Lists {
 
     /**
      * Show all the lists a user has access to.
-     * 
+     *
      * @return array
      */
     public function getLists()
@@ -14,7 +14,7 @@ trait Lists {
 
     /**
      * Show a list.
-     * 
+     *
      * @param  int $listId The id of the list.
      * @return array
      */
@@ -25,7 +25,7 @@ trait Lists {
 
     /**
      * Create a new list.
-     * 
+     *
      * @param  array $attributes
      * @return array
      */
@@ -54,7 +54,7 @@ trait Lists {
 
     /**
      * Make a list public.
-     * 
+     *
      * @param  int $listId The id of the list.
      * @param  array $attributes
      * @return array
@@ -70,7 +70,7 @@ trait Lists {
 
     /**
      * Delete a list.
-     * 
+     *
      * @param  int $listId The id of the list.
      * @param  array $attributes
      * @return array
@@ -85,5 +85,5 @@ trait Lists {
 
         return $this->getStatusCode();
     }
- 
+
 }

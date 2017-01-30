@@ -4,7 +4,7 @@ trait Webhook {
 
     /**
      * Show all the webhooks for a list.
-     * 
+     *
      * @param  array $attributes
      * @return array
      */
@@ -17,7 +17,7 @@ trait Webhook {
 
     /**
      * Create a webhook for a list.
-     * 
+     *
      * @param  array $attributes
      * @return array
      */
@@ -30,7 +30,7 @@ trait Webhook {
 
     /**
      * Delete a webhook for a list.
-     * 
+     *
      * @param  int $webhookId The id of the webhook.
      * @return int
      */
