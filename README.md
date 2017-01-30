@@ -53,6 +53,8 @@ $w = new Wunderlist($clientId, $clientSecret, $accessToken);
 $w->getCurrentUser();
 ```
 
+> You can optionally pass a boolean as the 4th parameter that decides whether or not the package should throw exceptions when a required parameter is missing. By default, it does.
+
 ##### Authorization
 For some methods (mostly the ones where you need to write, update or delete data), you're going to need a user access token. Up until this point you've only had the app access token, which you can use for yourself.
 
@@ -92,8 +94,7 @@ Since this package doesn't perform validation or sanitization, you can provide a
 Most of the time, the methods will return an array containing the results of what you just did. For example, if you `createTask()`, it will return the task that was just created. Some methods (such as `deleteTask()`) will return a status code. You can always use `getStatusCode()` regardless of what the method returned.
 
 ##### How does it look like?
-In the current interation of this package, (almost) each method maps to a Wunderlist API endpoint. In the future, I might turn the interface to a more fluent one.
-Right now, this is how the interface looks:
+Almost each method maps to a Wunderlist API endpoint:
 ```php
 // Get all tasks for a given list
 $wunderlist->getTasks(['list_id' => 9876]);
@@ -101,15 +102,6 @@ $wunderlist->getTasks(['list_id' => 9876]);
 // Get all lists
 $wunderlist->getLists();
 ```
-In the future, it'd look like this:
-```php
-// Get all tasks for a given list
-$wunderlist->lists()->find(9876)->tasks()->all();
-
-// Get the first task of each list
-$wunderlist->lists()->all()->tasks()->first();
-```
-If you've ever used [Laravel's Eloquent](http://laravel.com/docs/5.1/eloquent ), you can probably see where I'd take the inspiration from..
 
 ##### How do I provide data?
 For most methods you'll need to provide an array of attributes, however, for certain ones you'll need to supply some value(s). Check the [API Docs](http://johnrivs.github.io/wunderlist/api-docs/ ) out to know what each method expects.
