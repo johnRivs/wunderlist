@@ -94,6 +94,10 @@
 <span class="pl-s1"></span>
 <span class="pl-s1"><span class="pl-smi">$w</span><span class="pl-k">-&gt;</span>getCurrentUser();</span></pre></div>
 
+<blockquote>
+  <p>You can optionally pass a boolean as the 4th parameter that decides whether or not the package should throw exceptions when a required parameter is missing. By default, it does.</p>
+</blockquote>
+
 <h5>
 <a id="authorization" class="anchor" href="#authorization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authorization</h5>
 
@@ -151,24 +155,13 @@
 <h5>
 <a id="how-does-it-look-like" class="anchor" href="#how-does-it-look-like" aria-hidden="true"><span class="octicon octicon-link"></span></a>How does it look like?</h5>
 
-<p>In the current interation of this package, (almost) each method maps to a Wunderlist API endpoint. In the future, I might turn the interface to a more fluent one.
-Right now, this is how the interface looks:</p>
+<p>Almost each method maps to a Wunderlist API endpoint:</p>
 
 <div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-c">// Get all tasks for a given list</span></span>
 <span class="pl-s1"><span class="pl-smi">$wunderlist</span><span class="pl-k">-&gt;</span>getTasks([<span class="pl-s"><span class="pl-pds">'</span>list_id<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">9876</span>]);</span>
 <span class="pl-s1"></span>
 <span class="pl-s1"><span class="pl-c">// Get all lists</span></span>
 <span class="pl-s1"><span class="pl-smi">$wunderlist</span><span class="pl-k">-&gt;</span>getLists();</span></pre></div>
-
-<p>In the future, it'd look like this:</p>
-
-<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-c">// Get all tasks for a given list</span></span>
-<span class="pl-s1"><span class="pl-smi">$wunderlist</span><span class="pl-k">-&gt;</span>lists()<span class="pl-k">-&gt;</span>find(<span class="pl-c1">9876</span>)<span class="pl-k">-&gt;</span>tasks()<span class="pl-k">-&gt;</span>all();</span>
-<span class="pl-s1"></span>
-<span class="pl-s1"><span class="pl-c">// Get the first task of each list</span></span>
-<span class="pl-s1"><span class="pl-smi">$wunderlist</span><span class="pl-k">-&gt;</span>lists()<span class="pl-k">-&gt;</span>all()<span class="pl-k">-&gt;</span>tasks()<span class="pl-k">-&gt;</span>first();</span></pre></div>
-
-<p>If you've ever used <a href="http://laravel.com/docs/5.1/eloquent">Laravel's Eloquent</a>, you can probably see where I'd take the inspiration from..</p>
 
 <h5>
 <a id="how-do-i-provide-data" class="anchor" href="#how-do-i-provide-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>How do I provide data?</h5>
