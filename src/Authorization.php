@@ -31,13 +31,13 @@ trait Authorization {
     public function getAuthToken($code)
     {
         return json_decode($this->http->post('https://www.wunderlist.com/oauth/access_token', [
-            'body' => [
-                'client_id' => $this->clientId,
+            'form_params' => [
+                'client_id'     => $this->clientId,
                 'client_secret' => $this->clientSecret,
-                'code' => $code
+                'code'          => $code
             ],
             'verify' => false
-        ])->getBody())['access_token'];
+        ])->getBody())->access_token;
     }
 
 }
