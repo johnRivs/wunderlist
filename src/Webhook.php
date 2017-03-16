@@ -49,7 +49,7 @@ trait Webhook {
      */
     public function deleteWebhooks($listId)
     {
-        $webhooks = $this->getWebhooks($listId);
+        $webhooks = $this->getWebhooks(['list_id' => $listId]);
 
         foreach ($webhooks as $webhook) {
             $this->deleteWebhook($webhook['id']);
