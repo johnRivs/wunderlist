@@ -1,6 +1,10 @@
 # Use the latest Wunderlist API version in your apps.
 [![Latest Stable Version](https://poser.pugx.org/johnrivs/wunderlist/v/stable)](https://packagist.org/packages/johnrivs/wunderlist) [![Total Downloads](https://poser.pugx.org/johnrivs/wunderlist/downloads)](https://packagist.org/packages/johnrivs/wunderlist) [![License](https://poser.pugx.org/johnrivs/wunderlist/license)](https://packagist.org/packages/johnrivs/wunderlist) [![Endpoint coverage](http://progressed.io/bar/85?title=progress)](#progress )
 
+---
+## Wunderlist will be officially shut down on May 6th. Move your lists and tasks to Microsoft To Do before May 6th.
+---
+
 [http://johnrivs.github.io/wunderlist](http://johnrivs.github.io/wunderlist )
 
 - [How to use](#how-to-use )
